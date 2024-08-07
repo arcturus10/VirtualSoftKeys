@@ -1,8 +1,11 @@
 package tw.com.daxia.virtualsoftkeys.service;
-
+//Internal Service
 import android.accessibilityservice.AccessibilityService;
+//Accessibility Service
 import android.accessibilityservice.AccessibilityServiceInfo;
+//Accessibility Service Info Service
 import android.app.Service;
+//'service' command or similar...App Services
 import android.content.Intent;
 import android.content.res.Configuration;
 import android.os.Handler;
@@ -12,15 +15,21 @@ import android.text.Editable;
 import android.view.View;
 import android.view.WindowManager;
 import android.view.accessibility.AccessibilityEvent;
+
 import android.widget.EditText;
 import android.widget.Toast;
 
 import java.lang.ref.WeakReference;
 
 import tw.com.daxia.virtualsoftkeys.R;
+//Resources
 import tw.com.daxia.virtualsoftkeys.common.PermissionUtils;
+//Internal Resorce for Managing Screen AlertWindow Permissions
+//SPF manager
 import tw.com.daxia.virtualsoftkeys.common.SPFManager;
+//Screen resolution and position helper class ScreenHelper
 import tw.com.daxia.virtualsoftkeys.common.ScreenHepler;
+
 import tw.com.daxia.virtualsoftkeys.service.view.SoftKeyTabletLandscapeView;
 import tw.com.daxia.virtualsoftkeys.service.view.SoftKeyView;
 import tw.com.daxia.virtualsoftkeys.service.view.TouchEventView;
@@ -124,13 +133,15 @@ public class ServiceFloating extends AccessibilityService {
 
     @Override
     public void onAccessibilityEvent(AccessibilityEvent event) {
-        //Experimental features for smart hidden
+        //Experimental features hidden
         try {
             //Check the focused view is from Edittext object
             Class<?> clazz = Class.forName(event.getClassName().toString());
+            //Class<?> clazz - tw.com.daxia.virtualsoftkeys.service.ServiceFloating.onAccessibilityEvent(AccessibilityEvent)
             if ((Editable.class.isAssignableFrom(clazz) || EditText.class.isAssignableFrom(clazz))
                     && disappearObj.getConfigTime() == DisappearObj.TIME_NEVER
                     && softKeyBar != null) {
+                //SoftKeyView softKeyBar
                 softKeyBar.getBaseView().setVisibility(View.GONE);
             }
         } catch (ClassNotFoundException e) {
@@ -162,7 +173,7 @@ public class ServiceFloating extends AccessibilityService {
 
 
     /**
-     * Update config by mainActivity
+     * Update config from mainActivity
      */
     public void updateTouchView(@Nullable Integer heightPx,
                                 @Nullable Integer widthPx,
@@ -255,6 +266,5 @@ public class ServiceFloating extends AccessibilityService {
             theService.isDelay = false;
         }
     }
-
 
 }

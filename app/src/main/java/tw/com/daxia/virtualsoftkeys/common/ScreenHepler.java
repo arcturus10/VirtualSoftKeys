@@ -10,6 +10,7 @@ import android.view.ViewGroup;
 
 /**
  * Created by daxia on 2016/9/23.
+ * Edited by arcturus10 on 7 August 2024
  */
 
 public class ScreenHepler {
@@ -19,6 +20,7 @@ public class ScreenHepler {
 
 
     public static int dpToPixel(final Resources r, final int dp) {
+        //Convert  pixels (px)  to  density-independent pixels (dp)
         return (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, dp, r.getDisplayMetrics());
     }
 
@@ -44,6 +46,8 @@ public class ScreenHepler {
 
     public static boolean isPortrait(Resources resources) {
         return resources.getConfiguration().orientation == Configuration.ORIENTATION_PORTRAIT;
+        //The above expression returns true when resources.getConfiguration().orientation = Configuration.ORIENTATION_PORTRAIT
+        //Thus, the above expression returns true wen device is in portrait ORIENTATION.
     }
 
 

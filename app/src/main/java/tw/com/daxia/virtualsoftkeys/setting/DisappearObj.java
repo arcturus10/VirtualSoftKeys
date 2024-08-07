@@ -1,7 +1,5 @@
 package tw.com.daxia.virtualsoftkeys.setting;
-
 import android.content.Context;
-
 import tw.com.daxia.virtualsoftkeys.common.SPFManager;
 
 /**
@@ -18,6 +16,7 @@ public class DisappearObj {
     public final static int TIME_3S = 3000;
     public final static int TIME_4S = 4000;
     public final static int TIME_5S = 5000;
+    //Vars for Time Delay
 
     private int configTime;
     private Context context;
@@ -72,6 +71,4 @@ public class DisappearObj {
         }
         return disappearTime;
     }
-
-
 }
